@@ -30,5 +30,26 @@ function draw () {
   if (scale <= minScale) {
     fibs = [1,1]
     initFibs()
+    scale = 1
+  } else {
+    scale *= 0.99
   }
+}
+
+function addFib () {
+  const fibLen = fibs.length
+
+  fibs.push(fibs[fibLen-1] + fibs[fibLen-2])
+}
+
+function initFibs () {
+  for(let i = 0; i < 25; i++) {
+    addFib()
+  }
+}
+
+function setMinScale () {
+  const fibLen = fibs.length
+
+  minScale = fibs[fibLen-5]/fibs[fibLen-1]
 }
